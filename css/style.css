@@ -42,7 +42,6 @@ main {
   height: 100%;
   width: 65%;
   min-width: 520px;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
@@ -50,19 +49,46 @@ main {
 .header-top-right {
   height: 70px;;
   width: 100%;
-  border: 1px solid red;
+  background-color: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-top-right-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-top-right-user img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.header-top-right-buttons i {
+  font-size: 25px;
+  color: #b1b1b1;
 }
 
 .messages-area {
   height: calc(100% - 140px);
-  border: 2px solid pink;
+  background-image: url('../img/mine.jpg');
 }
 
 .input-bar-right {
   height: 70px;;
   width: 100%;
-  border: 1px solid red;
+  background-color: #f3eeea;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
+
+.input-bar-right input {
+  width: 80%;
+}
+
 
 
 
@@ -70,7 +96,7 @@ main {
   height: 100%;
   width: 35%;
   min-width: 300px;
-  border: 1px solid black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -83,17 +109,36 @@ main {
 .header-top-left {
   height: 70px;
   width: : 100%;
-  border: 1px solid green;
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top-left-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-top-left-user img {
+  width: 50px;
+  border-radius: 50%;
 }
 
 .notifications-bar {
   height: 80px;
   width: : 100%;
-  border: 1px solid green;
+  background-color: #8edafc;
+  display: flex;
+  align-items: center;
 }
 
 .input-bar-left {
   height: 50px;
   width: : 100%;
-  border: 1px solid green;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
