@@ -1,0 +1,99 @@
+/* RESET */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* CLEARFIX */
+/* .clearfix::after {
+  display: table;
+  content: '';
+  clear: both;
+} */
+
+main {
+  height: 100vh;
+  width: 100%;
+  /* position: relative; */
+  background: linear-gradient(to bottom,
+  #009688 0px,
+  #009688 15vh,
+  #dadbd3 15vh,
+  #dadbd3 100vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 90vh;
+  width: 80%;
+  /* margin: auto; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* transform: translate(-0%, -50%); */
+  display: flex;
+}
+
+
+
+.col-right {
+  height: 100%;
+  width: 65%;
+  min-width: 520px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-top-right {
+  height: 70px;;
+  width: 100%;
+  border: 1px solid red;
+}
+
+.messages-area {
+  height: calc(100% - 140px);
+  border: 2px solid pink;
+}
+
+.input-bar-right {
+  height: 70px;;
+  width: 100%;
+  border: 1px solid red;
+}
+
+
+
+.col-left {
+  height: 100%;
+  width: 35%;
+  min-width: 300px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.top-left-el-wrapper {
+  min-height: 200px;
+}
+
+.header-top-left {
+  height: 70px;
+  width: : 100%;
+  border: 1px solid green;
+}
+
+.notifications-bar {
+  height: 80px;
+  width: : 100%;
+  border: 1px solid green;
+}
+
+.input-bar-left {
+  height: 50px;
+  width: : 100%;
+  border: 1px solid green;
+}
