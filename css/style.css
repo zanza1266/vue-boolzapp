@@ -106,7 +106,7 @@ main {
 
 .header-top-right-buttons i,
 .header-top-left-buttons i {
-  font-size: 22px;
+  font-size: 20px;
   color: #b1b1b1;
   margin-left: 10px;
 }
@@ -127,6 +127,11 @@ main {
   border-style: none;
   height: 50%;
   border-radius: 5px;
+  padding: 0 15px;
+}
+
+.input-bar-right input::placeholder {
+ color:   #bfc9ca;
 }
 
 .input-bar-right i {
@@ -140,7 +145,7 @@ main {
 .col-left {
   height: 100%;
   width: 35%;
-  min-width: 300px;
+  min-width: 350px;
   background-color: white;
 }
 
@@ -177,11 +182,31 @@ main {
   background-color: #f2f4f4 ;
 }
 
-.input-bar-left input {
+.input-cont {
+  position: relative;
   height: 70%;
-  width: 80%;
+  width: 85%;
+  border-radius: 5px;
+}
+
+.input-cont i {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translate(-0%, -50%);
+  color:  #d5d8dc;
+}
+
+.input-bar-left input {
+  height: 100%;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #ffffff;
+  padding-left: 30px;
+}
+
+.input-bar-left input::placeholder {
+ color:   #bfc9ca;
 }
 
 .user-list-wrapper {
@@ -215,4 +240,8 @@ main {
 
 .input-bar-right i:hover {
   color: black;
+}
+
+#user_list li:hover {
+  background-color: #f2f4f4;
 }
