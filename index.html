@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
 
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,67 +27,69 @@
       <main>
         <div class="container">
 
-          <div class="col-left">
+          <div class="col-left flex-col">
             <div class="top-left-el-wrapper">
-              <div class="header-top-left">
-                <div class="header-top-left-user">
+
+              <div class="header-top-left flex-row jfy-between alg-center">
+                <div class="header-top-left-user flex-row jfy-center alg-center">
                   <img :src="loggedUser.avatar" alt="">
                   <p>{{loggedUser.name + ' ' + loggedUser.surname}}</p>
                 </div>
 
                 <div class="header-top-left-buttons">
-                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
-                  <i class="fa fa-comment" aria-hidden="true"></i>
-                  <i class=" fa fa-ellipsis-v" aria-hidden="true"></i>
+                  <a href="#"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
+                  <a href="#"><i class=" fa fa-ellipsis-v" aria-hidden="true"></i></a>
                 </div>
               </div>
 
-              <div class="notifications-bar">
-                <div class="notification">
+              <div class="notifications-bar flex-row alg-center">
+                <div class="notification flex-row alg-center jfy-center">
                   <i class="fa fa-bell-slash" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <p>Ricevi notifiche di nuovi messaggi</p>
-                  <p> <a href="#">Attiva notifiche desktop</a> </p>
+                  <p class="font-15">Ricevi notifiche di nuovi messaggi</p>
+                  <p><a href="#" class="font-15 dk-grey">Attiva notifiche desktop</a></p>
                 </div>
               </div>
 
-              <div class="input-bar-left">
+              <div class="input-bar-left flex-row jfy-center alg-center">
                 <input type="text" name="" value="" v-model="inputSearchBar">
               </div>
+
             </div>
 
             <div class="user-list-wrapper">
               <ul id="user_list">
-              <li v-for="(element, index) in contacts">
-                <img :src="element.avatar" alt="">
-                {{element.name}}
-
-              </li>
-            </ul>
+                <li class="flex-row alc-center" v-for="(element, index) in contacts">
+                  <img :src="element.avatar" alt="">
+                  {{element.name}}
+                </li>
+              </ul>
             </div>
 
           </div>
 
-          <div class="col-right">
-            <div class="header-top-right">
-              <div class="header-top-right-user">
+          <div class="col-right flex-col">
+            <div class="header-top-right flex-row alg-center jfy-between">
+              <div class="header-top-right-user flex-row jfy-center alg-center">
                 <img src="img/avatar_1.jpg" alt="">
                 <div class="last-access_name">
-                  <p>Lorem</p>
-                  <p>Ultimo accesso:</p>
+                  <p class="font-15 black">Lorem</p>
+                  <p class="font-13">Ultimo accesso:</p>
                 </div>
               </div>
               <div class="header-top-right-buttons">
-                <i class=" fa fa-search" aria-hidden="true"></i>
-                <i class=" fa fa-paperclip" aria-hidden="true"></i>
-                <i class=" fa fa-ellipsis-v" aria-hidden="true"></i>
+                <a href=""><i class=" fa fa-search" aria-hidden="true"></i></a>
+                <a href="#"><i class=" fa fa-paperclip" aria-hidden="true"></i></a>
+                <a href="#"><i class=" fa fa-ellipsis-v" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="messages-area">
 
             </div>
-            <div class="input-bar-right">
+            <div class="input-bar-right flex-row jfy-around
+             alg-center">
               <i class="fa fa-smile-o" aria-hidden="true"></i>
               <input type="text" name="" value="" v-model="inputSearchBar">
               <i class="fa fa-microphone" aria-hidden="true"></i>

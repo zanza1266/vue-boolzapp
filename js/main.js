@@ -5,7 +5,7 @@ const myApp = new Vue ({
     loggedUser: {
       name: 'Gianluca',
       surname: 'Zanzarella',
-      avatar:'img/avatar_io.jpg'
+      avatar:'img/avatar_8.jpg'
     },
 
     contacts: [
