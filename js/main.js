@@ -7,24 +7,29 @@ const myApp = new Vue ({
       surname: 'Zanzarella',
       avatar:'img/avatar_8.jpg'
     },
-
+    selectedContact: {
+      name: '',
+      surname: '',
+      lastOnline:'',
+      avatar: ''
+    },
     contacts: [
       userOne = {
         name: 'Michele',
         surname: '',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 09:34',
         avatar: 'img/avatar_1.jpg'
       },
       userTwo = {
         name: 'Fabio',
         surname: '',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 22:44',
         avatar: 'img/avatar_2.jpg'
       },
       userThree = {
         name: 'Samuele',
         surname: '',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 13:34',
         avatar: 'img/avatar_3.jpg'
       },
       userFour = {
