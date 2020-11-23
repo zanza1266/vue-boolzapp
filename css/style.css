@@ -141,9 +141,13 @@ a {
   overflow-y: auto;
 }
 
+.mess-container {
+  min-width: 580px;
+}
+
 .mess {
   position: relative;
-  /* background-color: white; */
+  max-width: 270px;
   border-radius: 10px;
   padding: 12px 50px 20px 12px;
   margin-bottom: 15px;

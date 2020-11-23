@@ -101,7 +101,8 @@
             <div class="messages-area flex-col">
               <div
                 v-for="el in displayedMessages"
-                class="flex-row"
+                v-bind:class="el.isSent ? 'flex-row-rev' : 'flex-row'"
+                class="mess-container"
                 >
 
                 <div class="mess" v-bind:class="el.isSent ? 'sent' : 'received'">
