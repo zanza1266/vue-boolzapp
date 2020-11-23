@@ -13,6 +13,9 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+    <!-- FONT AWESOME 5.5.0 -->
+    <script src="https://kit.fontawesome.com/f699c63b2e.js" crossorigin="anonymous"></script>
+
     <!-- VUE -->
     <script src="vue/vue.js" charset="utf-8"></script>
 
@@ -39,7 +42,7 @@
                 <div class="header-top-left-buttons">
                   <a href="#"><i class="fa fa-circle-o-notch" aria-hidden="true"></i></a>
                   <a href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
-                  <a href="#"><i class=" fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                 </div>
               </div>
 
@@ -65,7 +68,13 @@
 
             <div class="user-list-wrapper">
               <ul id="user_list">
-                <li class="flex-row alc-center" v-for="(element, index) in contacts" @click="selectedContact.name = element.name, selectedContact.avatar = element.avatar, selectedContact.lastOnline = element.lastOnline">
+                <li
+                  class="flex-row alg-center"
+                  v-for="(element, index) in contacts"
+                  @click="selectedContact.name = element.name, selectedContact.avatar = element.avatar, selectedContact.lastOnline = element.lastOnline, displayedMessages = element.messagesHistory,
+                  toggleColor(element)"
+                  :class="{grey: element.selectedBackground}">
+
                   <img :src="element.avatar" alt="">
                   {{element.name}}
                 </li>
@@ -84,13 +93,23 @@
                 </div>
               </div>
               <div class="header-top-right-buttons">
-                <a href=""><i class=" fa fa-search" aria-hidden="true"></i></a>
+                <a href=""><i class="fas fa-search"></i></a>
                 <a href="#"><i class=" fa fa-paperclip" aria-hidden="true"></i></a>
-                <a href="#"><i class=" fa fa-ellipsis-v" aria-hidden="true"></i></a>
+                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
               </div>
             </div>
-            <div class="messages-area">
+            <div class="messages-area flex-col">
+              <div
+                v-for="el in displayedMessages"
+                class="flex-row"
+                >
 
+                <div class="mess" v-bind:class="el.isSent ? 'sent' : 'received'">
+                  {{el.message}}
+                  <span>{{el.date}}</span>
+                </div>
+
+              </div>
             </div>
             <div class="input-bar-right flex-row jfy-around
              alg-center">

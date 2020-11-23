@@ -1,4 +1,4 @@
-/* RESET */
+ /* RESET */
 * {
   padding: 0;
   margin: 0;
@@ -10,6 +10,11 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.flex-row-rev {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .flex-col {
@@ -49,6 +54,19 @@
   font-size: 13px;
 }
 
+.grey {
+  background-color: grey;
+}
+
+.sent {
+  background-color: #d5f9ba;
+
+}
+
+.received {
+  background-color: white;
+}
+
 /* ------------------ */
 
 main {
@@ -56,8 +74,8 @@ main {
   width: 100%;
   /* position: relative; */
   background: linear-gradient(to bottom,
-  #009688 0px,
-  #009688 15vh,
+  #00bfa5 0px,
+  #00bfa5 15vh,
   #dadbd3 15vh,
   #dadbd3 100vh);
   display: flex;
@@ -76,6 +94,10 @@ main {
   display: flex;
 }
 
+a {
+  cursor: default;
+}
+
 
 /* COL RIGHT */
 
@@ -86,7 +108,8 @@ main {
 }
 
 .header-top-right {
-  height: 70px;;
+  height: 70px;
+  min-height: 70px;
   width: 100%;
   padding: 0px 20px;
   border-left: 1px solid #d6d6d6;
@@ -113,11 +136,30 @@ main {
 
 .messages-area {
   height: calc(100% - 140px);
+  padding: 20px 100px 0px 100px;
   background-image: url('../img/mine.jpg');
+  overflow-y: auto;
+}
+
+.mess {
+  position: relative;
+  /* background-color: white; */
+  border-radius: 10px;
+  padding: 12px 50px 20px 12px;
+  margin-bottom: 15px;
+}
+
+.mess span {
+  font-size: 10px;
+  color: lightgrey;
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
 }
 
 .input-bar-right {
-  height: 70px;;
+  height: 70px;
+  min-height: 70px;
   width: 100%;
   background-color: #f3eeea;
 }
@@ -240,8 +282,4 @@ main {
 
 .input-bar-right i:hover {
   color: black;
-}
-
-#user_list li:hover {
-  background-color: #f2f4f4;
 }
