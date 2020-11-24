@@ -20,7 +20,7 @@
     <script src="vue/vue.js" charset="utf-8"></script>
 
     <!-- MY FUNCTIONS -->
-    <!-- <script src="js/functions.js" charset="utf-8"></script> -->
+    <!-- <script src="js/myFunctions.js" charset="utf-8"></script> -->
 
     <title>Boolzapp</title>
   </head>
@@ -70,10 +70,10 @@
               <ul id="user_list">
                 <li
                   class="flex-row alg-center"
-                  v-for="(element, index) in contacts"
-                  @click="selectedContact.name = element.name, selectedContact.avatar = element.avatar, selectedContact.lastOnline = element.lastOnline, displayedMessages = element.messagesHistory,
-                  toggleColor(element)"
-                  :class="{grey: element.selectedBackground}">
+                  :class="{grey: element.selectedBackground}"
+                  v-for="(element, index) in filteredUserList"
+                  @click="toggleColor(element),
+                  switchUserInList(element, index)">
 
                   <img :src="element.avatar" alt="">
                   {{element.name}}
@@ -86,10 +86,10 @@
           <div class="col-right flex-col">
             <div class="header-top-right flex-row alg-center jfy-between">
               <div class="header-top-right-user flex-row jfy-center alg-center">
-                <img :src="selectedContact.avatar" alt="">
+                <img :src="contacts[selectedContIndex].avatar" alt="">
                 <div class="last-access_name">
-                  <p class="font-15 black">{{selectedContact.name}}</p>
-                  <p class="font-13">{{selectedContact.lastOnline}}</p>
+                  <p class="font-15 black">{{contacts[selectedContIndex].name}}</p>
+                  <p class="font-13">{{contacts[selectedContIndex].lastOnline}}</p>
                 </div>
               </div>
               <div class="header-top-right-buttons">
@@ -100,12 +100,13 @@
             </div>
             <div class="messages-area flex-col">
               <div
-                v-for="el in displayedMessages"
+                v-for="el in contacts[selectedContIndex].messagesHistory"
                 v-bind:class="el.isSent ? 'flex-row-rev' : 'flex-row'"
                 class="mess-container"
                 >
 
                 <div class="mess" v-bind:class="el.isSent ? 'sent' : 'received'">
+
                   {{el.message}}
                   <span>{{el.date}}</span>
                 </div>
@@ -115,7 +116,8 @@
             <div class="input-bar-right flex-row jfy-around
              alg-center">
               <i class="fa fa-smile-o" aria-hidden="true"></i>
-              <input type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="inputMessage">
+              <input type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="inputObj.message"
+              v-on:keyup.enter="sendMsg">
               <i class="fa fa-microphone" aria-hidden="true"></i>
             </div>
           </div>

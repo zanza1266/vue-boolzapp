@@ -6,16 +6,11 @@ const myApp = new Vue ({
       surname: 'Zanzarella',
       avatar:'img/avatar_8.jpg'
     },
-    selectedContact: {
-      name: '',
-      surname: '',
-      lastOnline:'',
-      avatar: ''
-    },
+    selectedContIndex: 0,
     contacts: [
-      userOne = {
+      {
         name: 'Michele',
-        surname: '',
+        searchString: 'michele',
         lastOnline:'Ultimo accesso oggi alle 09:34',
         avatar: 'img/avatar_1.jpg',
         messagesHistory: [
@@ -33,65 +28,102 @@ const myApp = new Vue ({
             message: 'Tutto fatto!',
             date: '10/01/2020 15:30:55',
             isSent: false
-          },
+          }
         ],
         selectedBackground: false,
       },
-      userTwo = {
+      {
         name: 'Fabio',
-        surname: '',
+        searchString: 'fabio',
         lastOnline:'Ultimo accesso oggi alle 22:44',
         avatar: 'img/avatar_2.jpg',
+        messagesHistory: [
+          {
+            message: 'La Marianna va in campagna',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          },
+          {
+            message: 'Sicuro di non aver sbagliato chat?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Scusa',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
         selectedBackground: false
       },
-      userThree = {
+      {
         name: 'Samuele',
-        surname: '',
+        searchString: 'samuele',
         lastOnline:'Ultimo accesso oggi alle 13:34',
         avatar: 'img/avatar_3.jpg',
+        messagesHistory: [],
         selectedBackground: false
       },
-      userFour = {
+      {
         name: 'Sam',
-        surname: '',
+        searchString: 'sam',
         lastOnline:'',
         avatar: 'img/avatar_4.jpg',
+        messagesHistory: [],
         selectedBackground: false
       },
-      userFour = {
+      {
         name: 'Andrea',
-        surname: '',
+        searchString: 'andrea',
         lastOnline:'',
         avatar: 'img/avatar_5.jpg',
+        messagesHistory: [],
         selectedBackground: false
       },
-      userFour = {
+      {
         name: 'Maria',
-        surname: '',
+        searchString: 'maria',
         lastOnline:'',
         avatar: 'img/avatar_6.jpg',
+        messagesHistory: [],
         selectedBackground: false
       },
-      userFour = {
+      {
         name: 'Davide',
-        surname: '',
+        searchString: 'davide',
         lastOnline:'',
         avatar: 'img/avatar_7.jpg',
+        messagesHistory: [],
         selectedBackground: false
       },
-      userFour = {
+      {
         name: 'Giulio',
-        surname: '',
+        searchString: 'giulio',
         lastOnline:'',
         avatar: 'img/avatar_8.jpg',
+        messagesHistory: [],
         selectedBackground: false
-      },
+      }
     ],
-    inputMessage: '',
-    inputSearchBar: '',
-    displayedMessages: [],
-    a: true
+    inputObj: {
+      message:'',
+      date: '',
+      isSent: true
+    },
+    inputSearchBar: ''
   },
+
+  computed: {
+
+    filteredUserList: function () {
+      // filtro gli utenti dalla barra di ricerca
+      let filtered = this.contacts.filter((element) => {
+        return element.searchString.includes(this.inputSearchBar);
+      });
+      return filtered;
+    }
+  },
+
   methods: {
 
     toggleColor: function (el) {
@@ -101,6 +133,45 @@ const myApp = new Vue ({
           e.selectedBackground = false;
         }
       })
+    },
+
+    switchUserInList: function (el, ind) {
+      this.selectedContIndex = ind;
+      // this.displayedMessages = el.messagesHistory;
+    },
+
+    sendMsg: function () {
+
+      // salvo in una variabile la stringa della data attuale da visualizzare (da rivedere..)
+
+      let now = new Date();
+      let sentDateString = now.getDate() + '/' + (now.getMonth()+1) + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+
+      let messToPush = {
+        ...this.inputObj,
+        date: sentDateString
+      };
+
+      this.contacts[this.selectedContIndex].messagesHistory.push(messToPush);
+
+      this.inputObj.message = '';
+
+      // codice di risposta automatica dopo due secondi
+      setTimeout(function () {
+
+        let now = new Date();
+        let receivedDateString = now.getDate() + '/' + (now.getMonth()+1) + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+
+        let autoAnswer = {
+          message:'Ok!',
+          date: receivedDateString,
+          isSent: false
+        }
+
+        myApp.contacts[myApp.selectedContIndex].messagesHistory.push(autoAnswer);
+
+      }, 2000);
+
     }
 
   }
