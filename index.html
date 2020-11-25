@@ -70,13 +70,23 @@
               <ul id="user_list">
                 <li
                   class="flex-row alg-center"
-                  :class="{grey: element.selectedBackground}"
+                  :class="{grey: element.selectedBkgr}"
                   v-for="(element, index) in filteredUserList"
-                  @click="toggleColor(element),
-                  switchUserInList(element, index)">
+                  @click="switchUserInList(element, index)">
 
                   <img :src="element.avatar" alt="">
-                  {{element.name}}
+
+                  <div class="user-details-wrapper">
+                    <div class="name-hour flex-row jfy-between">
+                      <span>{{element.name}}</span>
+                      <span>{{element.messagesHistory.slice(-1)[0].date}}</span>
+
+                    </div>
+                    <div class="last-msg"
+                    v-if="element.messagesHistory.length > 0">
+                      {{element.messagesHistory.slice(-1)[0].message}}
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -98,7 +108,7 @@
                 <a href="#"><i class="fas fa-ellipsis-v"></i></a>
               </div>
             </div>
-            <div class="messages-area flex-col">
+            <div class="messages-area flex-col" :class="{opened: emojiSwitch}">
               <div
                 v-for="el in contacts[selectedContIndex].messagesHistory"
                 v-bind:class="el.isSent ? 'flex-row-rev' : 'flex-row'"
@@ -107,18 +117,28 @@
 
                 <div class="mess" v-bind:class="el.isSent ? 'sent' : 'received'">
 
-                  {{el.message}}
+                  <span>{{el.message}}</span>
                   <span>{{el.date}}</span>
                 </div>
 
               </div>
             </div>
+
+            <div class="emoji flex-row" :class="{hg: emojiSwitch}">
+              <div class="emo" v-for="element in emoji" @click="insertEmoji(element)">
+                {{element}}
+              </div>
+            </div>
             <div class="input-bar-right flex-row jfy-around
              alg-center">
-              <i class="fa fa-smile-o" aria-hidden="true"></i>
-              <input type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="inputObj.message"
+              <i class="fa fa-smile-o" aria-hidden="true" @click="emojiToggle"></i>
+
+
+              <input type="text" name="" value="" placeholder="Scrivi un messaggio"
+              v-model="inputMsg"
               v-on:keyup.enter="sendMsg">
-              <i class="fa fa-microphone" aria-hidden="true"></i>
+              <i class="fa fa-microphone" aria-hidden="true" v-if="inputMsg.length == 0"></i>
+              <i class="fas fa-arrow-right" v-else @click="sendMsg"></i>
             </div>
           </div>
 

@@ -1,3 +1,7 @@
+
+const emoji = [
+"😀", "😄", "😁", "🤣", "😊", "😇", "🙃", "😉", "😍", "😛", "😡", "😨", "😰", "😥", "😓", "🤗", "🤔", "🤭", "👍", "💪", "👋", "🤚", "✋", "🖖", "👌", "🙏", "☝️", "👻", "👽", "👾", "🤖", "🎃", "👶", "🧒", "👦", "👧", "🧑", "👱", "👨", "🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐨", "🐯", "🦁"];
+
 const myApp = new Vue ({
   el: '#root',
   data: {
@@ -6,35 +10,32 @@ const myApp = new Vue ({
       surname: 'Zanzarella',
       avatar:'img/avatar_8.jpg'
     },
-    selectedContIndex: 0,
     contacts: [
       {
         name: 'Michele',
-        searchString: 'michele',
         lastOnline:'Ultimo accesso oggi alle 09:34',
         avatar: 'img/avatar_1.jpg',
         messagesHistory: [
           {
             message: 'Hai portato a spasso il cane?',
-            date: '10/01/2020 15:30:55',
+            date: '15:30',
             isSent: true
           },
           {
             message: 'Ricordati di dargli da mangiare',
-            date: '10/01/2020 15:30:55',
+            date: '15:30',
             isSent: true
           },
           {
             message: 'Tutto fatto!',
-            date: '10/01/2020 15:30:55',
+            date: '15:30',
             isSent: false
           }
         ],
-        selectedBackground: false,
+        selectedBkgr: false,
       },
       {
         name: 'Fabio',
-        searchString: 'fabio',
         lastOnline:'Ultimo accesso oggi alle 22:44',
         avatar: 'img/avatar_2.jpg',
         messagesHistory: [
@@ -54,63 +55,154 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBackground: false
+        selectedBkgr: false
       },
       {
         name: 'Samuele',
-        searchString: 'samuele',
-        lastOnline:'Ultimo accesso oggi alle 13:34',
+        lastOnline:'Ultimo accesso oggi alle 11:34',
         avatar: 'img/avatar_3.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       },
       {
         name: 'Sam',
-        searchString: 'sam',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 14:34',
         avatar: 'img/avatar_4.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       },
       {
         name: 'Andrea',
-        searchString: 'andrea',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 13:55',
         avatar: 'img/avatar_5.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       },
       {
         name: 'Maria',
-        searchString: 'maria',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 22:34',
         avatar: 'img/avatar_6.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       },
       {
         name: 'Davide',
-        searchString: 'davide',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 17:34',
         avatar: 'img/avatar_7.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       },
       {
         name: 'Giulio',
-        searchString: 'giulio',
-        lastOnline:'',
+        lastOnline:'Ultimo accesso oggi alle 15:34',
         avatar: 'img/avatar_8.jpg',
-        messagesHistory: [],
-        selectedBackground: false
+        messagesHistory: [
+          {
+            message: 'Hai portato a spasso il cane?',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Ricordati di dargli da mangiare',
+            date: '10/01/2020 15:30:55',
+            isSent: true
+          },
+          {
+            message: 'Tutto fatto!',
+            date: '10/01/2020 15:30:55',
+            isSent: false
+          }
+        ],
+        selectedBkgr: false
       }
     ],
-    inputObj: {
-      message:'',
-      date: '',
-      isSent: true
-    },
-    inputSearchBar: ''
+    inputMsg: '',
+    inputSearchBar: '',
+    emoji,
+    emojiSwitch: false
+  },
+  created () {
+    this.selectedContIndex = 0;
   },
 
   computed: {
@@ -118,53 +210,56 @@ const myApp = new Vue ({
     filteredUserList: function () {
       // filtro gli utenti dalla barra di ricerca
       let filtered = this.contacts.filter((element) => {
-        return element.searchString.includes(this.inputSearchBar);
+        return element.name.toLocaleLowerCase().includes(this.inputSearchBar);
       });
       return filtered;
     }
   },
 
   methods: {
-
-    toggleColor: function (el) {
-      this.contacts.map((e)=> {
-        el.selectedBackground = true;
-        if (el.selectedBackground === e.selectedBackground) {
-          e.selectedBackground = false;
-        }
-      })
+    getHourString() {
+      let date = new Date();
+      return  date.toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'})
     },
-
+    emojiToggle() {
+      this.emojiSwitch = !this.emojiSwitch;
+    },
+    insertEmoji(el) {
+      this.inputMsg = this.inputMsg + el;
+    },
     switchUserInList: function (el, ind) {
-      this.selectedContIndex = ind;
-      // this.displayedMessages = el.messagesHistory;
-    },
 
+      this.selectedContIndex = ind;
+
+      // gestisco il cambio del background alla selezione dell'utente nella lista
+      this.contacts.map((e)=> {
+        if(e.selectedBkgr == true) {
+          e.selectedBkgr = false;
+        }
+      });
+      el.selectedBkgr = true;
+    },
     sendMsg: function () {
 
-      // salvo in una variabile la stringa della data attuale da visualizzare (da rivedere..)
-
-      let now = new Date();
-      let sentDateString = now.getDate() + '/' + (now.getMonth()+1) + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
-
-      let messToPush = {
-        ...this.inputObj,
-        date: sentDateString
+      let msgToPush = {
+        message: this.inputMsg,
+        isSent: true,
+        date: this.getHourString()
       };
 
-      this.contacts[this.selectedContIndex].messagesHistory.push(messToPush);
+      this.contacts[this.selectedContIndex].messagesHistory.push(msgToPush);
 
-      this.inputObj.message = '';
+      this.inputMsg = '';
 
       // codice di risposta automatica dopo due secondi
       setTimeout(function () {
 
-        let now = new Date();
-        let receivedDateString = now.getDate() + '/' + (now.getMonth()+1) + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        let date = new Date();
+        dateString = date.toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'});
 
         let autoAnswer = {
           message:'Ok!',
-          date: receivedDateString,
+          date: dateString,
           isSent: false
         }
 
@@ -173,6 +268,5 @@ const myApp = new Vue ({
       }, 2000);
 
     }
-
   }
 })
