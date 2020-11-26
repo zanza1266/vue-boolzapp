@@ -96,10 +96,10 @@
           <div class="col-right flex-col">
             <div class="header-top-right flex-row alg-center jfy-between">
               <div class="header-top-right-user flex-row jfy-center alg-center">
-                <img :src="contacts[selectedContIndex].avatar" alt="">
+                <img :src="selectedElement.avatar" alt="">
                 <div class="last-access_name">
-                  <p class="font-15 black">{{contacts[selectedContIndex].name}}</p>
-                  <p class="font-13">{{contacts[selectedContIndex].lastOnline}}</p>
+                  <p class="font-15 black">{{selectedElement.name}}</p>
+                  <p class="font-13">{{selectedElement.lastOnline}}</p>
                 </div>
               </div>
               <div class="header-top-right-buttons">
@@ -109,8 +109,7 @@
               </div>
             </div>
             <div class="messages-area flex-col" :class="{opened: emojiSwitch}">
-              <div
-                v-for="el in contacts[selectedContIndex].messagesHistory"
+              <div v-for="el in selectedElement.messagesHistory"
                 v-bind:class="el.isSent ? 'flex-row-rev' : 'flex-row'"
                 class="mess-container"
                 >
@@ -123,7 +122,6 @@
 
               </div>
             </div>
-
             <div class="emoji flex-row" :class="{hg: emojiSwitch}">
               <div class="emo" v-for="element in emoji" @click="insertEmoji(element)">
                 {{element}}

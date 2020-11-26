@@ -167,7 +167,6 @@ a {
   height: 200px;
   min-height: 200px;
   padding-top: 15px;
-  transition: height 1s, padding-top 2s;
 }
 
 

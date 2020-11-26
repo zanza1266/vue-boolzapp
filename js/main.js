@@ -33,6 +33,7 @@ const myApp = new Vue ({
           }
         ],
         selectedBkgr: false,
+        id: 1
       },
       {
         name: 'Fabio',
@@ -55,7 +56,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 2
       },
       {
         name: 'Samuele',
@@ -78,7 +80,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 3
       },
       {
         name: 'Sam',
@@ -101,7 +104,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 4
       },
       {
         name: 'Andrea',
@@ -124,7 +128,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 5
       },
       {
         name: 'Maria',
@@ -147,7 +152,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 6
       },
       {
         name: 'Davide',
@@ -170,7 +176,8 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id: 7
       },
       {
         name: 'Giulio',
@@ -193,18 +200,19 @@ const myApp = new Vue ({
             isSent: false
           }
         ],
-        selectedBkgr: false
+        selectedBkgr: false,
+        id:8
       }
     ],
+    selectedElement: '',
     inputMsg: '',
     inputSearchBar: '',
     emoji,
     emojiSwitch: false
   },
-  created () {
-    this.selectedContIndex = 0;
+  mounted: function () {
+    this.selectedElement = this.contacts[0];
   },
-
   computed: {
 
     filteredUserList: function () {
@@ -212,10 +220,10 @@ const myApp = new Vue ({
       let filtered = this.contacts.filter((element) => {
         return element.name.toLocaleLowerCase().includes(this.inputSearchBar);
       });
+      console.log(filtered);
       return filtered;
     }
   },
-
   methods: {
     getHourString() {
       let date = new Date();
@@ -229,7 +237,7 @@ const myApp = new Vue ({
     },
     switchUserInList: function (el, ind) {
 
-      this.selectedContIndex = ind;
+      this.selectedElement = el;
 
       // gestisco il cambio del background alla selezione dell'utente nella lista
       this.contacts.map((e)=> {
@@ -247,12 +255,16 @@ const myApp = new Vue ({
         date: this.getHourString()
       };
 
-      this.contacts[this.selectedContIndex].messagesHistory.push(msgToPush);
+      this.selectedElement.messagesHistory.push(msgToPush);
 
       this.inputMsg = '';
 
+      let selectedUserHistory= this.selectedElement.messagesHistory;
+
       // codice di risposta automatica dopo due secondi
       setTimeout(function () {
+
+        console.log(selectedUserHistory);
 
         let date = new Date();
         dateString = date.toLocaleTimeString([],{hour: '2-digit', minute: '2-digit'});
@@ -263,7 +275,7 @@ const myApp = new Vue ({
           isSent: false
         }
 
-        myApp.contacts[myApp.selectedContIndex].messagesHistory.push(autoAnswer);
+        selectedUserHistory.push(autoAnswer);
 
       }, 2000);
 
