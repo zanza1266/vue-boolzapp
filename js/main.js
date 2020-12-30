@@ -204,7 +204,7 @@ const myApp = new Vue ({
         id:8
       }
     ],
-    selectedElement: '',
+    selectedElement: {},
     inputMsg: '',
     inputSearchBar: '',
     emoji,
